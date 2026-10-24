@@ -1,0 +1,96 @@
+{
+  "brand": "若水汇",
+  "series": "若水汇产品线：饮用水、爽肤水、面膜",
+  "generator": "内置 image_gen",
+  "common_prompt": "Use case: precise-object-edit / product-mockup. Asset for a Chinese premium water brand website. Image 1 is the exact approved packaging reference, image 2 is the approved logo reference. Preserve the actual slim tall clear tapered glass bottle geometry, glass base, screw cap, off-white paper label, delicate ink landscape and curved-top paperboard outer sleeve. Brand text must read 若水汇 with small 杭州文旅联名, logo must follow image 2 exactly: two fine crossing mountain/water curves and a small ring sun. No unrelated branding, no extra products, no fictional certification or marketing claims. Clean precise commercial product photography, soft daylight, premium understated Chinese landscape aesthetic. Render all visible Chinese lettering accurately. This is a product image asset, not a website mockup.",
+  "assets": [
+    {
+      "file": "product-hupao.png",
+      "name": "西湖·虎跑泉",
+      "size": [
+        1024,
+        1536
+      ],
+      "brief": "Portrait 2:3. One silver-grey capped bottle foreground left with matching curved-top carton behind right. Silver ink landscape and miniature pagoda. Label 西湖·虎跑泉 / WEST LAKE / TIGER SPRING / 饮用天然泉水 / 净含量 330mL. Carton 虎跑泉 / 西湖名泉，泉声入山，清甘润和。 Warm ivory background, pale stone table, daylight, full product visible."
+    },
+    {
+      "file": "product-qiandao.png",
+      "name": "淳安·千岛湖",
+      "size": [
+        1024,
+        1536
+      ],
+      "brief": "Portrait 2:3. Match product-hupao composition, lighting, camera, scale and margins. Pale blue cap, mist blue lake/island landscape. Label 淳安·千岛湖 / QIANDAO LAKE / 饮用天然泉水 / 净含量 330mL. Carton 千岛湖 / 群岛映碧水，湖山相依，清润悠远。 No pagoda. Full product visible."
+    },
+    {
+      "file": "product-jingshan.png",
+      "name": "余杭·径山",
+      "size": [
+        1024,
+        1536
+      ],
+      "brief": "Portrait 2:3. Match product-hupao composition, lighting, camera, scale and margins. Ivory cap, tea grey-green mountains and traditional temple pavilion. Label 余杭·径山 / JINGSHAN / 饮用天然泉水 / 净含量 330mL. Carton 径山 / 古寺茶山相映，山林静谧，茶禅流韵。 Full product visible."
+    },
+    {
+      "file": "collection-banner.png",
+      "name": "系列横幅",
+      "size": [
+        2172,
+        724
+      ],
+      "brief": "Panoramic 3:1 website hero photography. Three approved bottle/carton pairs on right 58%, left 40% empty ivory wall reserved for HTML headline. Pale stone surface, soft window light, full caps/cartons/bases visible. No heading or corner branding. Preserve individual silver-grey, mist-blue and ivory/tea-grey packaging."
+    },
+    {
+      "file": "logo-symbol-transparent.png",
+      "name": "透明底标志整理版",
+      "size": [
+        1774,
+        887
+      ],
+      "brief": "Background extraction from supplied logo reference. Preserve existing blue-grey thin crossing mountain/water curves and small ring above. Remove warm off-white background to real alpha, remove clipped bottom text, no redesign. Center in wide 2:1 transparent canvas. No shadow, glow, checkerboard or extra objects.",
+      "note": "生成式整理稿；精确制版请沿用原始矢量标志。"
+    },
+    {
+      "file": "product-toner.png",
+      "name": "若水汇·爽肤水",
+      "size": [
+        1024,
+        1536
+      ],
+      "prompt_file": "skincare-prompt-set.json"
+    },
+    {
+      "file": "product-mask.png",
+      "name": "若水汇·面膜",
+      "size": [
+        1024,
+        1536
+      ],
+      "prompt_file": "skincare-prompt-set.json"
+    },
+    {
+      "file": "product-family-banner.png",
+      "name": "若水汇·全产品线横幅",
+      "size": [
+        2172,
+        724
+      ],
+      "prompt_file": "skincare-prompt-set.json"
+    }
+  ],
+  "reference_files": [
+    "reference-packaging.jpg",
+    "reference-logo.png"
+  ],
+  "palette": {
+    "ivory": "#F3EFE8",
+    "mineralSilver": "#9EA5A4",
+    "mistBlue": "#A9BDC3",
+    "teaGrey": "#AAA995",
+    "ink": "#486575"
+  },
+  "usage": "产品展示图采用统一 2:3 比例。横幅保持 3:1，标题放左侧留白；移动端可优先使用单品图。透明 logo 已核验含 alpha 通道。包装文字为视觉稿内容，正式生产信息以确认稿为准。",
+  "scope": "只交付素材，未改动网站页面、样式、脚本和路由。",
+  "water_series": "杭州文旅联名：虎跑泉、千岛湖、径山；各330 mL",
+  "skincare_note": "护肤品沿用原有瓶型与袋型，统一新品牌标志与包装语言；未添加未经提供的容量、成分和功效。"
+}

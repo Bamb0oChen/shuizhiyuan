@@ -1,0 +1,142 @@
+{
+  "brand": "若水汇",
+  "date": "2026-10-24",
+  "currency": "CNY",
+  "status": "官网／路演建议零售价，非已上线成交价",
+  "assumptions": [
+    "饮用水规格以最新参考图的 330 mL 为准，三款同价。",
+    "爽肤水 150 mL、面膜 25 mL/片、5片/盒为定价方案假设，未改动包装图印字。",
+    "无成本、订单规模或渠道扣点数据，本方案不声称已核算毛利。",
+    "实体产品价格不含快递费；山庄住宿与服务为概念体验参考价。"
+  ],
+  "products": [
+    {
+      "id": "water",
+      "name": "若水汇 · 西湖·虎跑泉",
+      "spec": "330 mL＋小卡 1 枚",
+      "price": 28,
+      "unit": "瓶",
+      "baseWithoutCard": 12
+    },
+    {
+      "id": "qiandao",
+      "name": "若水汇 · 千岛·源水",
+      "spec": "330 mL＋小卡 1 枚",
+      "price": 28,
+      "unit": "瓶",
+      "baseWithoutCard": 12
+    },
+    {
+      "id": "jingshan",
+      "name": "若水汇 · 径山·龙泉",
+      "spec": "330 mL＋小卡 1 枚",
+      "price": 28,
+      "unit": "瓶",
+      "baseWithoutCard": 12
+    },
+    {
+      "id": "toner",
+      "name": "若水汇 · 爽肤水",
+      "spec": "150 mL（拟定）",
+      "price": 128,
+      "unit": "瓶"
+    },
+    {
+      "id": "mask",
+      "name": "若水汇 · 面膜",
+      "spec": "25 mL × 5 片（拟定）",
+      "price": 59,
+      "unit": "盒",
+      "singlePrice": 15
+    },
+    {
+      "id": "cards",
+      "name": "若水汇 · 杭城三泉小卡",
+      "spec": "三款各 1 枚 · 含流苏",
+      "price": 48,
+      "unit": "套",
+      "singlePrice": 18
+    }
+  ],
+  "bundles": [
+    {
+      "id": "water-gift",
+      "name": "杭城三泉文旅礼盒",
+      "content": "三款水各1瓶＋三枚小卡＋礼盒",
+      "price": 88,
+      "unit": "盒",
+      "note": "含礼盒包装，单瓶带卡合计84元，礼盒溢价4元。"
+    },
+    {
+      "id": "skincare-set",
+      "name": "若水日常护理套装",
+      "content": "爽肤水150mL＋面膜5片",
+      "price": 168,
+      "unit": "套",
+      "separateTotal": 187,
+      "saving": 19
+    },
+    {
+      "id": "full-gift",
+      "name": "若水汇山水礼遇套装",
+      "content": "三泉文旅礼盒＋爽肤水150mL＋面膜5片",
+      "price": 258,
+      "unit": "套",
+      "separateTotal": 275,
+      "saving": 17
+    }
+  ],
+  "experiences": [
+    {
+      "id": "spa-entry",
+      "name": "水疗区日间体验",
+      "spec": "1人 · 2小时；泡池、休息区与茶饮",
+      "price": 128,
+      "unit": "人"
+    },
+    {
+      "id": "spa-care",
+      "name": "SPA护理",
+      "spec": "1人 · 60分钟；护理内容待运营方案确认，不含泡池门票",
+      "price": 398,
+      "unit": "人"
+    },
+    {
+      "id": "resort-stay",
+      "name": "山庄双人山景客房",
+      "spec": "周日至周四1间1晚，双人早餐；不含节假日，不含SPA护理",
+      "price": 899,
+      "unit": "间夜"
+    },
+    {
+      "id": "resort-retreat",
+      "name": "双人山居体验套装",
+      "spec": "周日至周四1间1晚＋双早＋2张水疗区日间票＋三泉文旅礼盒",
+      "price": 1199,
+      "unit": "套",
+      "separateTotal": 1243,
+      "saving": 44
+    }
+  ],
+  "references": [
+    {
+      "title": "依云330mL玻璃瓶，20瓶装，供应商标价208元",
+      "url": "https://www.suo-ma.cn/home/product/detail/id/5091/sku/T06.43.001.html",
+      "observed": "2026-10-24",
+      "note": "约10.4元/瓶，仅作玻璃瓶水价格参照；批量采购与单瓶文旅零售渠道不同。"
+    },
+    {
+      "title": "自然堂官网雪域修护保湿冰肌水",
+      "url": "https://www.chando-himalaya.com/prolist_100001001.html",
+      "observed": "2026-10-24",
+      "price": 110,
+      "note": "官网系列页标价110元。与本项目配方和规格不同，只参考护肤价格带。"
+    },
+    {
+      "title": "杭州西溪喜来登SPA项目参考",
+      "url": "https://spachina360.com/stores/sheraton-spa-xixi-sheraton-branch-hangzhou?lang=zh",
+      "observed": "2026-10-24",
+      "note": "第三方目录列60分钟精油SPA白天特惠490元、健身游泳含泡池单次160元，非本项目报价。"
+    }
+  ]
+}

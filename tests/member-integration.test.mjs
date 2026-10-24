@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import vm from 'node:vm';
 
@@ -129,4 +129,31 @@ test('unknown member sections and brands use the existing not-found route', () =
   assert.match(app.main.innerHTML, /页面不存在/);
   app.navigate('#/brand/missing');
   assert.match(app.main.innerHTML, /页面不存在/);
+});
+
+test('current catalog keeps water, skincare and cards discoverable with valid local images', () => {
+  const app = boot({ hash: '#/products' });
+  assert.equal((app.main.innerHTML.match(/class="product-card"/g) || []).length, 6);
+  const catalogHtml = app.main.innerHTML;
+  for (const id of ['water', 'qiandao', 'jingshan', 'toner', 'mask', 'cards']) {
+    assert.ok(catalogHtml.includes(`#/product/${id}`));
+    app.navigate(`#/product/${id}`);
+    assert.match(app.main.innerHTML, /建议零售价/);
+    assert.match(app.main.innerHTML, /若水汇/);
+    const image = app.main.innerHTML.match(/src="\.\/assets\/([^\"]+)" alt="若水汇/);
+    assert.ok(image, `${id} has a branded product photo`);
+    assert.ok(existsSync(new URL(`../assets/${image[1]}`, import.meta.url)), `${id} photo exists`);
+    assert.doesNotMatch(app.main.innerHTML, /product-(water|mask|toner)-cutout|水知源/);
+  }
+  app.navigate('#/product/drink');
+  assert.match(app.main.innerHTML, /爽肤水/);
+});
+
+test('existing water favorites survive the branding and image update', () => {
+  const app = boot({ hash: '#/member', stored: { 'water-product-water': 'yes' } });
+  assert.match(app.main.innerHTML, /我的心愿单/);
+  assert.match(app.main.innerHTML, /ruoshui\/hangtags\/water-hupao-card\.png/);
+  app.navigate('#/product/water');
+  assert.match(app.main.innerHTML, /已加入心愿单/);
+  assert.match(app.main.innerHTML, /¥28/);
 });

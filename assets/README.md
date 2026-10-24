@@ -1,4 +1,4 @@
-# 水知源素材说明
+# 若水汇素材说明
 
 所有运行所需素材均存储在此目录，页面无第三方素材请求。
 
@@ -24,6 +24,16 @@
 | `experience-tea.png` | 现代中式临水茶席，深色木桌、陶瓷茶壶与杯子、落地窗外山水。 |
 | `experience-morning.png` | 临水窗边的晨间清水杯，右侧主体、左侧较暗空间，用于饮水活动。 |
 | `water-light.png` | 银蓝色浅水与细小涟漪，亮色留白，两侧少量自然石块；不含文字和产品。 |
+
+## 若水汇新素材
+
+`ruoshui/` 保存用户提供的新品牌参考和通过内置 ImageGen 生成的产品、标志与康养山庄概念图。各目录的 JSON 说明包含用途、规格和生成提示词。
+
+- 当前网页使用 `ruoshui/hangtags/water-*-card.png` 三款带卡水图、`ruoshui/product-toner.png` 爽肤水、`ruoshui/product-mask.png` 面膜以及 `ruoshui/hangtags/hangtags-trio.png` 小卡组合。
+- 标志使用 `ruoshui/logo-symbol-transparent.png`，原始标志参考为 `ruoshui/reference-logo.png`。
+- `ruoshui/hangtags/reference-hangtags.png` 为本轮最新带卡包装参考，名称优先于先前水款概念图。
+- `ruoshui/resort/` 四张山庄场景为方案效果图，不代表已建成或正在营业的场所。
+- 旧版包装和产品素材保留归档，当前产品组件不再引用。
 
 ## 开源视觉资源
 
