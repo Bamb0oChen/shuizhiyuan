@@ -138,7 +138,7 @@ test('current catalog keeps water, skincare and cards discoverable with valid lo
   for (const id of ['water', 'qiandao', 'jingshan', 'toner', 'mask', 'cards']) {
     assert.ok(catalogHtml.includes(`#/product/${id}`));
     app.navigate(`#/product/${id}`);
-    assert.match(app.main.innerHTML, /建议零售价/);
+    assert.match(app.main.innerHTML, /零售价/);
     assert.match(app.main.innerHTML, /若水汇/);
     const image = app.main.innerHTML.match(/src="\.\/assets\/([^\"]+)" alt="若水汇/);
     assert.ok(image, `${id} has a branded product photo`);

@@ -15,7 +15,7 @@ const products = [
     "intent": "以西湖与虎跑泉为设计主题，将青绿山水、亭阁插画与流苏小卡结合。330 mL 玻璃瓶搭配一枚同款小卡，让杭州的山水成为可以带走的日常纪念。",
     "image": "ruoshui/hangtags/water-hupao-card.png",
     "price": 28,
-    "priceUnit": "瓶",
+    "priceUnit": "套",
     "spec": "330 mL＋小卡 1 枚",
     "basePrice": 12,
     "facts": [
@@ -28,11 +28,11 @@ const products = [
         "330 mL＋流苏小卡 1 枚"
       ],
       [
-        "带卡建议价",
-        "¥28 / 瓶"
+        "带卡零售价",
+        "¥28 / 套"
       ],
       [
-        "基础装建议价",
+        "基础装零售价",
         "¥12 / 瓶（不含小卡）"
       ],
       [
@@ -50,7 +50,7 @@ const products = [
     "intent": "以千岛湖的湖光与群岛为设计主题，雾蓝瓶盖、轻淡山水瓶标与岛屿插画小卡相呼应。与虎跑泉、径山款组成杭城三泉系列。",
     "image": "ruoshui/hangtags/water-qiandao-card.png",
     "price": 28,
-    "priceUnit": "瓶",
+    "priceUnit": "套",
     "spec": "330 mL＋小卡 1 枚",
     "basePrice": 12,
     "facts": [
@@ -63,11 +63,11 @@ const products = [
         "330 mL＋流苏小卡 1 枚"
       ],
       [
-        "带卡建议价",
-        "¥28 / 瓶"
+        "带卡零售价",
+        "¥28 / 套"
       ],
       [
-        "基础装建议价",
+        "基础装零售价",
         "¥12 / 瓶（不含小卡）"
       ],
       [
@@ -85,7 +85,7 @@ const products = [
     "intent": "以径山的层峦、古寺与茶韵为设计主题，米白瓶盖与暖灰金色山水相配。异形小卡、串珠与流苏延续整套文旅系列的收藏感。",
     "image": "ruoshui/hangtags/water-jingshan-card.png",
     "price": 28,
-    "priceUnit": "瓶",
+    "priceUnit": "套",
     "spec": "330 mL＋小卡 1 枚",
     "basePrice": 12,
     "facts": [
@@ -98,11 +98,11 @@ const products = [
         "330 mL＋流苏小卡 1 枚"
       ],
       [
-        "带卡建议价",
-        "¥28 / 瓶"
+        "带卡零售价",
+        "¥28 / 套"
       ],
       [
-        "基础装建议价",
+        "基础装零售价",
         "¥12 / 瓶（不含小卡）"
       ],
       [
@@ -121,18 +121,18 @@ const products = [
     "image": "ruoshui/product-toner.png",
     "price": 128,
     "priceUnit": "瓶",
-    "spec": "150 mL（拟定）",
+    "spec": "150 mL",
     "facts": [
       [
         "产品系列",
         "若水汇 · 日常护肤"
       ],
       [
-        "拟定规格",
+        "展示规格",
         "150 mL / 瓶"
       ],
       [
-        "建议零售价",
+        "零售价",
         "¥128 / 瓶"
       ],
       [
@@ -147,28 +147,23 @@ const products = [
     "shortName": "面膜",
     "category": "日常护肤",
     "desc": "给自己，一段安静的护理时光。",
-    "intent": "独立袋装面膜与同系列纸盒，采用米白底、雾蓝山水和若水汇新标志。每盒暂按五片拟定，成分、使用方式与适用肤质将在正式产品资料确认后补充。",
+    "intent": "独立袋装面膜与同系列纸盒，采用米白底、雾蓝山水和若水汇新标志。每盒五片，成分、使用方式与适用肤质将在正式产品资料确认后补充。",
     "image": "ruoshui/product-mask.png",
     "price": 59,
     "priceUnit": "盒",
-    "spec": "25 mL × 5 片（拟定）",
-    "singlePrice": 15,
+    "spec": "5 片装",
     "facts": [
       [
         "产品系列",
         "若水汇 · 日常护肤"
       ],
       [
-        "拟定规格",
-        "25 mL / 片 · 5 片 / 盒"
+        "展示规格",
+        "5 片 / 盒"
       ],
       [
-        "整盒建议价",
+        "零售价",
         "¥59 / 盒"
-      ],
-      [
-        "单片建议价",
-        "¥15 / 片"
       ],
       [
         "成分与使用",
@@ -187,7 +182,6 @@ const products = [
     "price": 48,
     "priceUnit": "套",
     "spec": "三款各 1 枚 · 含流苏",
-    "singlePrice": 18,
     "facts": [
       [
         "产品系列",
@@ -198,18 +192,64 @@ const products = [
         "三款各 1 枚，配串珠与流苏"
       ],
       [
-        "套装建议价",
+        "套装零售价",
         "¥48 / 套"
-      ],
-      [
-        "单枚建议价",
-        "¥18 / 枚"
       ],
       [
         "制作阶段",
         "插画、材质与工艺待打样确认"
       ]
     ]
+  }
+];
+const retailPriceList = [
+  {
+    "name": "饮用水基础装",
+    "spec": "330 mL",
+    "price": 12,
+    "unit": "瓶"
+  },
+  {
+    "name": "饮用水＋流苏小卡",
+    "spec": "330 mL＋流苏小卡",
+    "price": 28,
+    "unit": "套"
+  },
+  {
+    "name": "爽肤水",
+    "spec": "150 mL",
+    "price": 128,
+    "unit": "瓶"
+  },
+  {
+    "name": "面膜",
+    "spec": "5 片装",
+    "price": 59,
+    "unit": "盒"
+  },
+  {
+    "name": "三款流苏小卡",
+    "spec": "三款各 1 枚",
+    "price": 48,
+    "unit": "套"
+  },
+  {
+    "name": "三泉文旅礼盒",
+    "spec": "三款水＋三枚小卡＋礼盒",
+    "price": 88,
+    "unit": "盒"
+  },
+  {
+    "name": "日常护理套装",
+    "spec": "爽肤水 150 mL＋面膜 5 片",
+    "price": 168,
+    "unit": "套"
+  },
+  {
+    "name": "山水礼遇套装",
+    "spec": "三泉文旅礼盒＋爽肤水＋面膜 5 片",
+    "price": 258,
+    "unit": "套"
   }
 ];
 
@@ -241,7 +281,7 @@ const heroCopy = [
 function art(product, mini=false) { return `<div class="${mini?'mini-art':'product-art'} product-photo ${product.id}"><img src="./assets/${product.image}" alt="${product.name}${product.category==='杭城三泉'?'与流苏小卡':'新包装'}产品展示图" ${mini?'':'loading="lazy"'} width="${product.id==='cards'?1536:1024}" height="${product.id==='cards'?1024:1536}"></div>`; }
 function scene(activity) { return `<div class="scene scene-${activity.id}"><img src="./assets/${activityImages[activity.id]}" alt="${activity.id==='morning'?'晨光中的一杯清水':activity.id==='source'?'阳光照耀山野中的清澈溪流':'临水茶室中的茶席'}" loading="lazy"><span class="scene-tag">${activity.tag}</span></div>`; }
 function activityCard(a) { return `<article class="activity-card"><a class="card-link" href="#/activity/${a.id}">${scene(a)}<div class="card-bottom"><h3>${a.title}</h3><span class="card-action">${a.id==='morning'?'参与仪式':'查看体验'} ${icon('arrow-up-right')}</span></div><p class="meta">${a.short}</p></a></article>`; }
-function productCard(p) { return `<article class="product-card"><a href="#/product/${p.id}">${art(p)}<div class="product-bottom"><div><h3>${p.name.replace('若水汇 · ','')}</h3><p>${p.desc}</p><p class="product-price"><span>建议零售价</span> ¥${p.price}<small> / ${p.priceUnit}</small></p><p class="product-spec">${p.spec}</p></div><span class="arrow-circle">${icon('arrow-up-right')}</span></div></a></article>`; }
+function productCard(p) { return `<article class="product-card"><a href="#/product/${p.id}">${art(p)}<div class="product-bottom"><div><h3>${p.name.replace('若水汇 · ','')}</h3><p>${p.desc}</p><p class="product-price"><span>零售价</span> ¥${p.price}<small> / ${p.priceUnit}</small></p><p class="product-spec">${p.spec}</p></div><span class="arrow-circle">${icon('arrow-up-right')}</span></div></a></article>`; }
 function heading(en, title, link='', label='查看全部') {return `<div class="section-heading"><div><p class="eyebrow">${en}</p><h2>${title}</h2></div>${link?`<a class="text-link" href="${link}">${label} <span>↗</span></a>`:''}</div>`;}
 function hero() {
   const a = activities[slide];
@@ -255,7 +295,7 @@ function hero() {
 }
 function home() { return `${hero()}
   <section class="home-panel section experiences" data-panel="1" aria-label="私享体验"><div class="section-heading"><h2>把时间，留给值得的相聚。</h2><p>以水为引，走进自然，走进生活。<br>在一场私享体验中，遇见更自在的自己。</p></div><div class="experience-grid">${activities.slice(1).map(activityCard).join('')}</div></section>
-  <section class="home-panel collection" data-panel="2" aria-label="若水好物"><div class="collection-copy"><p class="eyebrow">RUO SHUI HUI</p><h2>从源头，到日常。</h2><p>以水为灵感，延展至生活的每一处。<br>若水汇，陪伴你构建更有质感的日常。</p><a class="outline" href="#/products">探索若水好物 ${icon('arrow-up-right')}</a></div><div class="collection-products">${products.filter(p=>['water','toner','mask'].includes(p.id)).map(p=>`<a href="#/product/${p.id}" class="collection-product">${art(p)}<h3>${p.id==='water'?'杭城三泉':p.shortName}</h3><p class="collection-price">建议 ¥${p.price} / ${p.priceUnit}</p></a>`).join('')}</div><span class="image-note">产品包装设计展示</span></section>
+  <section class="home-panel collection" data-panel="2" aria-label="若水好物"><div class="collection-copy"><p class="eyebrow">RUO SHUI HUI</p><h2>从源头，到日常。</h2><p>以水为灵感，延展至生活的每一处。<br>若水汇，陪伴你构建更有质感的日常。</p><a class="outline" href="#/products">探索若水好物 ${icon('arrow-up-right')}</a></div><div class="collection-products">${products.filter(p=>['water','toner','mask'].includes(p.id)).map(p=>`<a href="#/product/${p.id}" class="collection-product">${art(p)}<h3>${p.id==='water'?'杭城三泉':p.shortName}</h3><p class="collection-price">¥${p.price} / ${p.priceUnit}</p></a>`).join('')}</div><span class="image-note">产品包装设计展示</span></section>
   ${partnerBand()}${panelNavigation()}`; }
 function partnerBand() {
   return `<section class="home-panel partner-band partner-panel" data-panel="3" aria-label="品牌合作">
@@ -267,11 +307,11 @@ function partnerBand() {
 }
 function panelNavigation() { return `<nav class="page-rail" aria-label="首页屏幕导航">${['水的日常','私享体验','若水好物','品牌合作'].map((name,i)=>`<button data-go-panel="${i}" aria-label="第${i+1}屏：${name}" ${i===0?'aria-current="step"':''}><span>${name}</span><i></i></button>`).join('')}</nav><button class="next-panel" data-next-panel aria-label="向下翻至下一屏"><span class="panel-counter">01 / 04</span><span class="next-label">向下探索</span>${icon('arrow-right')}</button><button class="water-toggle" data-action="water-toggle" aria-pressed="${autoplay}" aria-label="${autoplay?'暂停':'开启'}水面动效">${icon('droplet')}<span>水面动效</span><span data-water-indicator>${autoplay?'开':'关'}</span></button>`; }
 
-function listing(type) {const isActivity=type==='activities';const items=isActivity?activities:products;const categories=['全部',...new Set(items.map(i=>i.category))];if(!categories.includes(currentFilter))currentFilter='全部';return `<div class="page-head"><p class="eyebrow">${isActivity?'WATER & EVERYDAY':'THE RUO SHUI HUI COLLECTION'}</p><h1>${isActivity?'私享体验':'若水好物'}</h1><p>${isActivity?'用一场体验、一份记录，让水走进生活。把时间留给真正喜欢的事。':'杭城三泉、日常护肤与文创小卡。展示价格为方案建议零售价，护肤规格为拟定，尚未开放购买。'}</p></div><section class="section"><div class="filters" aria-label="${isActivity?'活动':'产品'}分类">${categories.map(c=>`<button class="filter" data-filter="${c}" aria-pressed="${currentFilter===c}">${c}</button>`).join('')}</div><div class="${isActivity?'activity':'product'}-grid">${items.filter(i=>currentFilter==='全部'||i.category===currentFilter).map(isActivity?activityCard:productCard).join('')}</div>${!isActivity&&currentFilter==='全部'?bundlePricing():''}</section>`;}
-function bundlePricing() { return `<section class="bundle-pricing" aria-labelledby="bundle-title"><p class="eyebrow">GIFT & EVERYDAY</p><h2 id="bundle-title">把喜欢的，放在一起。</h2><div class="bundle-grid"><article><h3>杭城三泉文旅礼盒</h3><p>三款水各 1 瓶＋三枚小卡＋礼盒</p><strong>¥88<small> / 盒</small></strong><p class="notice">带卡单瓶合计 ¥84，另含礼盒包装。</p></article><article><h3>日常护理套装</h3><p>爽肤水 150 mL＋面膜 5 片（规格拟定）</p><strong>¥168<small> / 套</small></strong><p class="notice">单品建议价合计 ¥187。</p></article><article><h3>山水礼遇套装</h3><p>三泉文旅礼盒＋爽肤水＋面膜 5 片</p><strong>¥258<small> / 套</small></strong><p class="notice">单品建议价合计 ¥275。</p></article></div><p class="notice">以上为官网与路演的建议定价方案，未核算实际成本。实体产品价格不含快递费。</p></section>`; }
+function listing(type) {const isActivity=type==='activities';const items=isActivity?activities:products;const categories=['全部',...new Set(items.map(i=>i.category))];if(!categories.includes(currentFilter))currentFilter='全部';return `<div class="page-head"><p class="eyebrow">${isActivity?'WATER & EVERYDAY':'THE RUO SHUI HUI COLLECTION'}</p><h1>${isActivity?'私享体验':'若水好物'}</h1><p>${isActivity?'用一场体验、一份记录，让水走进生活。把时间留给真正喜欢的事。':'杭城三泉、日常护肤与文创小卡。产品规格与零售价按当前方案展示，尚未开放购买。'}</p></div><section class="section"><div class="filters" aria-label="${isActivity?'活动':'产品'}分类">${categories.map(c=>`<button class="filter" data-filter="${c}" aria-pressed="${currentFilter===c}">${c}</button>`).join('')}</div><div class="${isActivity?'activity':'product'}-grid">${items.filter(i=>currentFilter==='全部'||i.category===currentFilter).map(isActivity?activityCard:productCard).join('')}</div>${!isActivity&&currentFilter==='全部'?bundlePricing():''}</section>`;}
+function bundlePricing() { return `<section class="bundle-pricing" aria-labelledby="bundle-title"><p class="eyebrow">GIFT & EVERYDAY</p><h2 id="bundle-title">把喜欢的，放在一起。</h2><div class="bundle-grid"><article><h3>三泉文旅礼盒</h3><p>三款水各 1 瓶＋三枚小卡＋礼盒</p><strong>¥88<small> / 盒</small></strong><p class="notice">带卡单品合计 ¥84，另含礼盒包装。</p></article><article><h3>日常护理套装</h3><p>爽肤水 150 mL＋面膜 5 片</p><strong>¥168<small> / 套</small></strong><p class="notice">单品零售价合计 ¥187。</p></article><article><h3>山水礼遇套装</h3><p>三泉文旅礼盒＋爽肤水＋面膜 5 片</p><strong>¥258<small> / 套</small></strong><p class="notice">单品零售价合计 ¥275。</p></article></div><details class="retail-prices"><summary>查看完整零售价（8 项）</summary><div class="retail-table-wrap"><table><caption>若水汇产品零售价</caption><thead><tr><th scope="col">产品</th><th scope="col">规格</th><th scope="col">零售价</th></tr></thead><tbody>${retailPriceList.map(p=>`<tr><th scope="row">${p.name}</th><td>${p.spec}</td><td>¥${p.price} / ${p.unit}</td></tr>`).join('')}</tbody></table></div></details><p class="notice">以上为产品方案零售价，尚未开放购买。运费另计。</p></section>`; }
 function localDate() {const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 function activityDetail(id) {const a=activities.find(a=>a.id===id);if(!a)return notFound();const saved=a.id==='morning'?readLocal('water-checkin')===localDate():readLocal(`water-event-${id}`)==='yes';return `<div class="page-head"><a class="back" href="#/activities">← 返回私享体验</a></div><article class="detail">${scene(a)}<div class="detail-copy"><p class="eyebrow">${a.category} / ${a.mode}</p><h1>${a.title}</h1><p>${a.detail}</p><ul class="fact-list">${a.facts.map(([k,v])=>`<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul><button class="primary" data-checkin="${id}" ${saved?'disabled':''}>${saved?(id==='morning'?'今日已记录 ✓':'已收藏 ✓'):a.action} ${saved?'':'↗'}</button><p class="notice">${id==='morning'?'记录仅保存在当前浏览器，不收集个人健康信息。':'收藏仅保存在当前浏览器；当前未开放实际预约。'}</p>${saved?`<p class="success">${id==='morning'?'今日的小小仪式，已完成。愿你从容开启这一天。':'已加入本机收藏。活动的具体安排仍在筹备中。'}</p>`:''}<div class="detail-note"><h2>与这一刻相配的好物</h2><p>${id==='tea'?'从一杯好水，开始一场好茶。':'从一杯日常饮用水，探索若水的选品方向。'}</p><a class="text-link" href="#/product/water">了解若水饮用水 ↗</a></div></div></article>`;}
-function productDetail(id) {const p=products.find(p=>p.id===id);if(!p)return notFound();const saved=readLocal(`water-product-${id}`)==='yes';return `<div class="page-head"><a class="back" href="#/products">← 返回若水好物</a></div><article class="detail">${art(p)}<div class="detail-copy"><p class="eyebrow">${p.category} / RUO SHUI HUI</p><h1>${p.name}</h1><p>${p.intent}</p><div class="detail-price"><span>建议零售价</span><strong>¥${p.price}<small> / ${p.priceUnit}</small></strong><p>${p.spec}</p></div><span class="demo-badge">产品设计展示 · 建议定价方案</span><ul class="fact-list">${p.facts.map(([k,v])=>`<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul><button class="primary" data-save-product="${id}" ${saved?'disabled':''}>${saved?'已加入心愿单 ✓':'加入本机心愿单 ↗'}</button><p class="notice">当前未开放购买。价格为方案建议，护肤规格为拟定，心愿单仅保存在当前浏览器。</p><div class="detail-note"><h2>${p.category==='杭城三泉'?'把杭州的山水，一起带走。':'同一份山水，更多日常。'}</h2><p>${p.category==='杭城三泉'?'三款水各 1 瓶、三枚小卡与礼盒，文旅礼盒建议价 ¥88。':p.id==='cards'?'小卡单枚建议价 ¥18，三款套装建议价 ¥48。':'爽肤水与五片装面膜，护理套装建议价 ¥168。'}</p><a class="text-link" href="#/products">浏览完整产品线 ↗</a></div></div></article>`;}
+function productDetail(id) {const p=products.find(p=>p.id===id);if(!p)return notFound();const saved=readLocal(`water-product-${id}`)==='yes';return `<div class="page-head"><a class="back" href="#/products">← 返回若水好物</a></div><article class="detail">${art(p)}<div class="detail-copy"><p class="eyebrow">${p.category} / RUO SHUI HUI</p><h1>${p.name}</h1><p>${p.intent}</p><div class="detail-price"><span>零售价</span><strong>¥${p.price}<small> / ${p.priceUnit}</small></strong><p>${p.spec}</p></div><span class="demo-badge">产品设计展示 · 零售价格方案</span><ul class="fact-list">${p.facts.map(([k,v])=>`<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul><button class="primary" data-save-product="${id}" ${saved?'disabled':''}>${saved?'已加入心愿单 ✓':'加入本机心愿单 ↗'}</button><p class="notice">当前未开放购买。价格为产品方案零售价，心愿单仅保存在当前浏览器。</p><div class="detail-note"><h2>${p.category==='杭城三泉'?'把杭州的山水，一起带走。':'同一份山水，更多日常。'}</h2><p>${p.category==='杭城三泉'?'三款水各 1 瓶、三枚小卡与礼盒，文旅礼盒零售价 ¥88。':p.id==='cards'?'三款流苏小卡各 1 枚，套装零售价 ¥48。':'爽肤水与五片装面膜，护理套装零售价 ¥168。'}</p><a class="text-link" href="#/products">浏览完整产品线 ↗</a></div></div></article>`;}
 function about() {
   return `<article class="about-page" aria-labelledby="about-title">
     <section class="about-hero">
