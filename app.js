@@ -91,7 +91,35 @@ function changeSlide(next) {
   pause.setAttribute('aria-label', `${autoplay?'暂停':'开始'}自动轮播与水面动效`);
   pause.innerHTML = icon(autoplay?'player-pause':'player-play');
 }
-function render(moveFocus=false){clearInterval(timer);const [page,rawId]=route();const id=rawId==='drink'?'toner':rawId;document.body.classList.toggle('is-home', !page);closeMenu();main.innerHTML=!page?home():page==='activities'||page==='products'?listing(page):page==='activity'?activityDetail(id):page==='product'?productDetail(id):page==='story'?story():page==='partners'?partners():page==='dashboard'?dashboard():notFound();decorateIcons(main);setupPanels();const active=page==='activity'?'activities':page==='product'?'products':page||'home';document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});const title=page==='activity'?activities.find(a=>a.id===id)?.title:page==='product'?products.find(p=>p.id===id)?.name:({activities:'水与日常',products:'知源好物',story:'关于水知源',partners:'品牌共生',dashboard:'合作伙伴工作台'})[page];document.title=`${title?title+' · ':''}水知源 · 好水，有源。生活，有知。`;if(moveFocus){scrollTo({top:0,behavior:'instant'});main.focus({preventScroll:true});}resetTimer();}
+function render(moveFocus=false) {
+  clearInterval(timer);
+  const [page,rawId,brandId] = route();
+  const id = rawId === 'drink' ? 'toner' : rawId;
+  const memberPage = page === 'member' || page === 'brand' || (page === 'activity' && id === 'morning');
+  document.body.classList.toggle('is-home', !page);
+  closeMenu();
+  main.innerHTML = !page ? home()
+    : page === 'member' ? WaterJourney.render(id || 'daily', brandId)
+    : page === 'brand' ? WaterJourney.brand(id)
+    : page === 'activity' && id === 'morning' ? WaterJourney.render()
+    : page === 'activities' || page === 'products' ? listing(page)
+    : page === 'activity' ? activityDetail(id)
+    : page === 'product' ? productDetail(id)
+    : page === 'story' ? story()
+    : page === 'partners' ? partners()
+    : page === 'dashboard' ? dashboard() : notFound();
+  decorateIcons(main);
+  setupPanels();
+  const active = memberPage ? 'member' : page === 'activity' ? 'activities' : page === 'product' ? 'products' : page || 'home';
+  document.querySelectorAll('[data-nav]').forEach(a => {
+    if (a.dataset.nav === active) a.setAttribute('aria-current','page');
+    else a.removeAttribute('aria-current');
+  });
+  const title = memberPage ? '我的知源' : page === 'activity' ? activities.find(a=>a.id===id)?.title : page === 'product' ? products.find(p=>p.id===id)?.name : ({activities:'水与日常',products:'知源好物',story:'关于水知源',partners:'品牌共生',dashboard:'合作伙伴工作台'})[page];
+  document.title = `${title ? title+' · ' : ''}水知源 · 好水，有源。生活，有知。`;
+  if (moveFocus) { scrollTo({top:0,behavior:'instant'}); main.focus({preventScroll:true}); }
+  resetTimer();
+}
 main.addEventListener('click',event=>{const button=event.target.closest('button');if(!button)return;if(button.dataset.slide!==undefined){changeSlide(Number(button.dataset.slide));resetTimer();}if(button.dataset.action){const a=button.dataset.action;if(a==='autoplay')autoplay=!autoplay;changeSlide(slide+(a==='next'?1:a==='previous'?-1:0));resetTimer();}if(button.dataset.filter){currentFilter=button.dataset.filter;render();[...document.querySelectorAll('[data-filter]')].find(el=>el.dataset.filter===currentFilter)?.focus();}if(button.dataset.checkin){const id=button.dataset.checkin;const persisted=writeLocal(id==='morning'?'water-checkin':`water-event-${id}`,id==='morning'?localDate():'yes');render();main.focus({preventScroll:true});toast(persisted?(id==='morning'?'今日第一杯水，已记录。':'已收藏这场活动。'):'浏览器存储不可用，本次记录仅在当前页面会话有效。');}if(button.dataset.saveProduct){const persisted=writeLocal(`water-product-${button.dataset.saveProduct}`,'yes');render();main.focus({preventScroll:true});toast(persisted?'已加入当前浏览器的心愿单。':'浏览器存储不可用，心愿单仅在当前页面会话有效。');}});
 main.addEventListener('submit',event=>{if(event.target.id!=='partner-form')return;event.preventDefault();const form=event.target;const data=new FormData(form);const brand=String(data.get('brand')||'').trim();if(!brand){form.elements.brand.setCustomValidity('请输入品牌名称');form.elements.brand.reportValidity();return;}const result=document.querySelector('#form-result');result.replaceChildren();const box=document.createElement('div');box.className='success';box.textContent=`意向预览：${brand} · ${data.get('category')}。联系邮箱：${data.get('contact')}。${data.get('idea')?'合作想法：'+data.get('idea')+'。':''}此内容仅在当前页面展示，未提交给平台。`;result.append(box);});
 main.addEventListener('input',event=>{if(event.target.name==='brand')event.target.setCustomValidity('');});
@@ -128,16 +156,6 @@ document.querySelector('.menu-toggle').addEventListener('click', () => {
 document.querySelector('.header').addEventListener('click', event => {const link=event.target.closest('a');if(!link||route().length)return;const index={'#/':0,'#/activities':1,'#/products':2,'#/partners':3}[link.getAttribute('href')];if(index!==undefined){event.preventDefault();goPanel(index);closeMenu();}});
 document.querySelector('#navigation').addEventListener('click', event => { if(event.target.closest('a')) closeMenu(); });
 document.addEventListener('keydown', event => { if(event.key==='Escape') closeMenu(); });
-const memberDialog = document.querySelector('#member-dialog');
-function openMember() {
-  const savedProducts = products.filter(p=>readLocal(`water-product-${p.id}`)==='yes');
-  const savedEvents = activities.filter(a=>a.id==='morning'?readLocal('water-checkin')===localDate():readLocal(`water-event-${a.id}`)==='yes');
-  document.querySelector('#member-content').innerHTML = `<h3>今日与收藏</h3>${savedEvents.length?savedEvents.map(a=>`<a class="saved-row" href="#/activity/${a.id}">${a.title}${icon('arrow-up-right')}</a>`).join(''):'<p class="empty-note">从每日第一杯水，开启你的知源日常。</p><a class="text-link" href="#/activity/morning">开启今日仪式 '+icon('arrow-up-right')+'</a>'}<h3>我的心愿单</h3>${savedProducts.length?savedProducts.map(p=>`<a class="saved-row" href="#/product/${p.id}">${art(p,true)}<span>${p.name}</span>${icon('arrow-up-right')}</a>`).join(''):'<p class="empty-note">还没有收藏的好物。</p><a class="text-link" href="#/products">发现知源好物 '+icon('arrow-up-right')+'</a>'}`;
-  memberDialog.showModal();
-}
-document.querySelector('[data-open-member]').addEventListener('click',openMember);
-document.querySelector('[data-close-member]').addEventListener('click',()=>memberDialog.close());
-memberDialog.addEventListener('click',event=>{ if(event.target.closest('a')) memberDialog.close(); if(event.target===memberDialog){const r=memberDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)memberDialog.close();} });
 reducedMotion.addEventListener('change',event=>{autoplay=!event.matches;changeSlide(slide);resetTimer();});
 function reflectPanel(index) {
   const changed = activePanel !== index;
@@ -176,7 +194,7 @@ function goPanel(index) {
   panelSettleTimer=setTimeout(()=>{panelSettling=false;wheelTotal=0;},reducedMotion.matches?300:1050);
 }
 main.addEventListener('wheel',event=>{
-  if(route().length||memberDialog.open||event.ctrlKey||event.metaKey||Math.abs(event.deltaX)>Math.abs(event.deltaY)||event.target.closest('input,textarea,select,dialog'))return;
+  if(route().length||event.ctrlKey||event.metaKey||Math.abs(event.deltaX)>Math.abs(event.deltaY)||event.target.closest('input,textarea,select,dialog'))return;
   event.preventDefault();
   const now=performance.now();
   const gap=now-wheelLast;
@@ -194,9 +212,10 @@ main.addEventListener('click',event=>{
   if(event.target.closest('[data-next-panel]'))goPanel(activePanel===3?0:activePanel+1);
 });
 document.addEventListener('keydown',event=>{
-  if(route().length||memberDialog.open||event.altKey||event.ctrlKey||event.metaKey||event.target.closest('input,textarea,select,button,a,[contenteditable="true"]'))return;
+  if(route().length||event.altKey||event.ctrlKey||event.metaKey||event.target.closest('input,textarea,select,button,a,[contenteditable="true"]'))return;
   const direction=['ArrowDown','PageDown',' '].includes(event.key)?1:['ArrowUp','PageUp'].includes(event.key)?-1:0;
   if(direction){event.preventDefault();if(!panelSettling)goPanel(activePanel+direction);}
   if(event.key==='Home'||event.key==='End'){event.preventDefault();goPanel(event.key==='Home'?0:3);}
 });
+WaterJourney.init();
 render();
