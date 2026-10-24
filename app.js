@@ -62,11 +62,11 @@ function partnerBand() {
     <div class="integrated-footer"><a class="brand" href="#/story">水知源<small>SHUI ZHI YUAN</small></a><div><a href="#/story">品牌理念</a><a href="#/partners">合作伙伴</a><span>© 2026 水知源 · 前端概念预览</span></div></div>
   </section>`;
 }
-function panelNavigation() { return `<nav class="page-rail" aria-label="首页屏幕导航">${['水的日常','私享体验','知源好物','品牌合作'].map((name,i)=>`<button data-go-panel="${i}" aria-label="第${i+1}屏：${name}" ${i===0?'aria-current="step"':''}><span>${name}</span><i></i></button>`).join('')}</nav><button class="next-panel" data-next-panel aria-label="向下翻至下一屏"><span class="panel-counter">01 / 04</span><span class="next-label">向下探索</span>${icon('arrow-right')}</button>`; }
+function panelNavigation() { return `<nav class="page-rail" aria-label="首页屏幕导航">${['水的日常','私享体验','知源好物','品牌合作'].map((name,i)=>`<button data-go-panel="${i}" aria-label="第${i+1}屏：${name}" ${i===0?'aria-current="step"':''}><span>${name}</span><i></i></button>`).join('')}</nav><button class="next-panel" data-next-panel aria-label="向下翻至下一屏"><span class="panel-counter">01 / 04</span><span class="next-label">向下探索</span>${icon('arrow-right')}</button><button class="water-toggle" data-action="water-toggle" aria-pressed="${autoplay}" aria-label="${autoplay?'暂停':'开启'}水面动效">${icon('droplet')}<span>水面动效</span><span data-water-indicator>${autoplay?'开':'关'}</span></button>`; }
 
-function listing(type) {const isActivity=type==='activities';const items=isActivity?activities:products;const categories=['全部',...new Set(items.map(i=>i.category))];if(!categories.includes(currentFilter))currentFilter='全部';return `<div class="page-head"><p class="eyebrow">${isActivity?'WATER & EVERYDAY':'THE CURATED COLLECTION'}</p><h1>${isActivity?'水与日常':'知源好物'}</h1><p>${isActivity?'用一场体验、一份记录，让水走进生活。把时间留给真正喜欢的事。':'以水为线索，探索饮用与日常护理。以下为规划中的产品方向，正式资料将在选品完成后更新。'}</p></div><section class="section"><div class="filters" aria-label="${isActivity?'活动':'产品'}分类">${categories.map(c=>`<button class="filter" data-filter="${c}" aria-pressed="${currentFilter===c}">${c}</button>`).join('')}</div><div class="${isActivity?'activity':'product'}-grid">${items.filter(i=>currentFilter==='全部'||i.category===currentFilter).map(isActivity?activityCard:productCard).join('')}</div></section>`;}
+function listing(type) {const isActivity=type==='activities';const items=isActivity?activities:products;const categories=['全部',...new Set(items.map(i=>i.category))];if(!categories.includes(currentFilter))currentFilter='全部';return `<div class="page-head"><p class="eyebrow">${isActivity?'WATER & EVERYDAY':'THE CURATED COLLECTION'}</p><h1>${isActivity?'私享体验':'知源好物'}</h1><p>${isActivity?'用一场体验、一份记录，让水走进生活。把时间留给真正喜欢的事。':'以水为线索，探索饮用与日常护理。以下为规划中的产品方向，正式资料将在选品完成后更新。'}</p></div><section class="section"><div class="filters" aria-label="${isActivity?'活动':'产品'}分类">${categories.map(c=>`<button class="filter" data-filter="${c}" aria-pressed="${currentFilter===c}">${c}</button>`).join('')}</div><div class="${isActivity?'activity':'product'}-grid">${items.filter(i=>currentFilter==='全部'||i.category===currentFilter).map(isActivity?activityCard:productCard).join('')}</div></section>`;}
 function localDate() {const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-function activityDetail(id) {const a=activities.find(a=>a.id===id);if(!a)return notFound();const saved=a.id==='morning'?readLocal('water-checkin')===localDate():readLocal(`water-event-${id}`)==='yes';return `<div class="page-head"><a class="back" href="#/activities">← 返回水与日常</a></div><article class="detail">${scene(a)}<div class="detail-copy"><p class="eyebrow">${a.category} / ${a.mode}</p><h1>${a.title}</h1><p>${a.detail}</p><ul class="fact-list">${a.facts.map(([k,v])=>`<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul><button class="primary" data-checkin="${id}" ${saved?'disabled':''}>${saved?(id==='morning'?'今日已记录 ✓':'已收藏 ✓'):a.action} ${saved?'':'↗'}</button><p class="notice">${id==='morning'?'记录仅保存在当前浏览器，不收集个人健康信息。':'收藏仅保存在当前浏览器；当前未开放实际预约。'}</p>${saved?`<p class="success">${id==='morning'?'今日的小小仪式，已完成。愿你从容开启这一天。':'已加入本机收藏。活动的具体安排仍在筹备中。'}</p>`:''}<div class="detail-note"><h2>与这一刻相配的好物</h2><p>${id==='tea'?'从一杯好水，开始一场好茶。':'从一杯日常饮用水，探索知源的选品方向。'}</p><a class="text-link" href="#/product/water">了解知源饮用水 ↗</a></div></div></article>`;}
+function activityDetail(id) {const a=activities.find(a=>a.id===id);if(!a)return notFound();const saved=a.id==='morning'?readLocal('water-checkin')===localDate():readLocal(`water-event-${id}`)==='yes';return `<div class="page-head"><a class="back" href="#/activities">← 返回私享体验</a></div><article class="detail">${scene(a)}<div class="detail-copy"><p class="eyebrow">${a.category} / ${a.mode}</p><h1>${a.title}</h1><p>${a.detail}</p><ul class="fact-list">${a.facts.map(([k,v])=>`<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul><button class="primary" data-checkin="${id}" ${saved?'disabled':''}>${saved?(id==='morning'?'今日已记录 ✓':'已收藏 ✓'):a.action} ${saved?'':'↗'}</button><p class="notice">${id==='morning'?'记录仅保存在当前浏览器，不收集个人健康信息。':'收藏仅保存在当前浏览器；当前未开放实际预约。'}</p>${saved?`<p class="success">${id==='morning'?'今日的小小仪式，已完成。愿你从容开启这一天。':'已加入本机收藏。活动的具体安排仍在筹备中。'}</p>`:''}<div class="detail-note"><h2>与这一刻相配的好物</h2><p>${id==='tea'?'从一杯好水，开始一场好茶。':'从一杯日常饮用水，探索知源的选品方向。'}</p><a class="text-link" href="#/product/water">了解知源饮用水 ↗</a></div></div></article>`;}
 function productDetail(id) {const p=products.find(p=>p.id===id);if(!p)return notFound();const saved=readLocal(`water-product-${id}`)==='yes';return `<div class="page-head"><a class="back" href="#/products">← 返回知源好物</a></div><article class="detail">${art(p)}<div class="detail-copy"><p class="eyebrow">${p.category} / CURATED BY SHUI ZHI YUAN</p><h1>${p.name}</h1><p>${p.intent}</p><span class="demo-badge">规划中的产品 · 包装为概念示意</span><ul class="fact-list">${p.facts.map(([k,v])=>`<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul><button class="primary" data-save-product="${id}" ${saved?'disabled':''}>${saved?'已加入心愿单 ✓':'加入本机心愿单 ↗'}</button><p class="notice">当前为产品展示原型，尚未开放购买。心愿单仅保存在当前浏览器。</p><div class="detail-note"><h2>我们希望呈现的选品标准</h2><p>来源透明、资料完整、体验适宜。正式上架前，将补充可核实的品牌、生产与产品信息。</p></div></div></article>`;}
 function story(){return `<div class="page-head"><p class="eyebrow">THE ORIGIN OF A GOOD LIFE</p><h1>水知源，知生活。</h1><p>一个以水为起点的品质生活品牌。我们相信，好的生活始于对日常的认真，也始于对来处的好奇。</p></div><section class="section story-layout"><div class="source-art">${waterScene('brand')}<span>知水之源<br>知生活之美</span></div><div class="values"><article><p class="eyebrow">01 / ORIGIN</p><h3>有源可循</h3><p>让产品的来处可了解，让选择有依据。用清晰的来源与产品资料，逐步建立信任。</p></article><article><p class="eyebrow">02 / RITUAL</p><h3>日常有意</h3><p>从每日第一杯水，到一场与朋友的雅集。在细微的日常中，为自己留一点时间。</p></article><article><p class="eyebrow">03 / CONNECTION</p><h3>与好品牌同行</h3><p>连接理念相近的合作伙伴，共同策划产品与体验，让水的故事走进更多生活场景。</p></article></div></section><section class="partner-band"><div><h2>让美好的想法，从这里汇流。</h2><p>欢迎饮水、饮品、护理与生活体验品牌探索合作。</p></div><a class="primary" href="#/partners">探索品牌合作 ↗</a></section>`;}
 function partners(){return `<div class="page-head"><p class="eyebrow">PARTNER WITH US</p><h1>同源而生，共赴美好。</h1><p>与水知源一起，把好产品与好体验带给注重生活品质的人。我们期待用审慎的选品与长期的共创，建立有价值的连接。</p></div><section class="section partner-layout"><div><h2>从相识，到共同生长。</h2><ol class="steps"><li><b>01</b><h3>了解品牌</h3><p>认识品牌理念、产品方向与合作意愿。</p></li><li><b>02</b><h3>资料与产品评估</h3><p>核对来源、资质与产品资料，明确展示内容。</p></li><li><b>03</b><h3>共创体验</h3><p>围绕产品策划活动，连接真实的生活场景。</p></li><li><b>04</b><h3>看见反馈</h3><p>规划提供品牌自身的产品浏览与活动参与汇总。</p></li></ol><a class="text-link" href="#/dashboard">预览合作伙伴工作台 ↗</a></div><form class="form-card" id="partner-form"><h2>记录合作意向</h2><p class="notice">前端演示：仅生成本页预览，不会发送或保存联系方式。</p><label for="brand-name">品牌名称 *</label><input id="brand-name" name="brand" required maxlength="80" placeholder="输入您的品牌名称"><label for="category">产品或服务方向 *</label><select id="category" name="category" required><option value="">请选择合作方向</option><option>饮用水</option><option>饮品</option><option>护肤与日用</option><option>生活体验</option><option>其他水相关方向</option></select><label for="contact">联系邮箱 *</label><input id="contact" name="contact" type="email" required maxlength="120" placeholder="name@brand.com"><label for="idea">合作想法</label><textarea id="idea" name="idea" maxlength="500" placeholder="介绍您的产品，或想一起策划的活动"></textarea><button class="primary" type="submit">预览合作意向 <span>↗</span></button><div id="form-result" role="status"></div></form></section>`;}
@@ -90,12 +90,14 @@ function changeSlide(next) {
   const pause = heroElement.querySelector('[data-action="autoplay"]');
   pause.setAttribute('aria-label', `${autoplay?'暂停':'开始'}自动轮播与水面动效`);
   pause.innerHTML = icon(autoplay?'player-pause':'player-play');
+  publishWaterState();
 }
 function render(moveFocus=false) {
   clearInterval(timer);
-  const [page,rawId,brandId] = route();
+  const [page, rawId, brandId] = route();
   const id = rawId === 'drink' ? 'toner' : rawId;
   const memberPage = page === 'member' || page === 'brand' || (page === 'activity' && id === 'morning');
+  document.body.dataset.page = memberPage ? 'member' : page || 'home';
   document.body.classList.toggle('is-home', !page);
   closeMenu();
   main.innerHTML = !page ? home()
@@ -108,23 +110,34 @@ function render(moveFocus=false) {
     : page === 'story' ? story()
     : page === 'partners' ? partners()
     : page === 'dashboard' ? dashboard() : notFound();
+  decorateInnerPage(page);
   decorateIcons(main);
   setupPanels();
   const active = memberPage ? 'member' : page === 'activity' ? 'activities' : page === 'product' ? 'products' : page || 'home';
   document.querySelectorAll('[data-nav]').forEach(a => {
-    if (a.dataset.nav === active) a.setAttribute('aria-current','page');
+    if (a.dataset.nav === active) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   });
-  const title = memberPage ? '我的知源' : page === 'activity' ? activities.find(a=>a.id===id)?.title : page === 'product' ? products.find(p=>p.id===id)?.name : ({activities:'水与日常',products:'知源好物',story:'关于水知源',partners:'品牌共生',dashboard:'合作伙伴工作台'})[page];
-  document.title = `${title ? title+' · ' : ''}水知源 · 好水，有源。生活，有知。`;
+  const title = memberPage ? '我的知源' : page === 'activity' ? activities.find(a => a.id === id)?.title : page === 'product' ? products.find(p => p.id === id)?.name : ({activities:'私享体验',products:'知源好物',story:'关于水知源',partners:'品牌共生',dashboard:'合作伙伴工作台'})[page];
+  document.title = `${title ? title + ' · ' : ''}水知源 · 好水，有源。生活，有知。`;
   if (moveFocus) { scrollTo({top:0,behavior:'instant'}); main.focus({preventScroll:true}); }
   resetTimer();
+  // Membership rerenders must also stop/restart the shared water renderer.
+  publishWaterState();
 }
-main.addEventListener('click',event=>{const button=event.target.closest('button');if(!button)return;if(button.dataset.slide!==undefined){changeSlide(Number(button.dataset.slide));resetTimer();}if(button.dataset.action){const a=button.dataset.action;if(a==='autoplay')autoplay=!autoplay;changeSlide(slide+(a==='next'?1:a==='previous'?-1:0));resetTimer();}if(button.dataset.filter){currentFilter=button.dataset.filter;render();[...document.querySelectorAll('[data-filter]')].find(el=>el.dataset.filter===currentFilter)?.focus();}if(button.dataset.checkin){const id=button.dataset.checkin;const persisted=writeLocal(id==='morning'?'water-checkin':`water-event-${id}`,id==='morning'?localDate():'yes');render();main.focus({preventScroll:true});toast(persisted?(id==='morning'?'今日第一杯水，已记录。':'已收藏这场活动。'):'浏览器存储不可用，本次记录仅在当前页面会话有效。');}if(button.dataset.saveProduct){const persisted=writeLocal(`water-product-${button.dataset.saveProduct}`,'yes');render();main.focus({preventScroll:true});toast(persisted?'已加入当前浏览器的心愿单。':'浏览器存储不可用，心愿单仅在当前页面会话有效。');}});
+
+main.addEventListener('click',event=>{const button=event.target.closest('button');if(!button)return;if(button.dataset.slide!==undefined){changeSlide(Number(button.dataset.slide));resetTimer();}if(button.dataset.action){const a=button.dataset.action;if(a==='autoplay'||a==='water-toggle')autoplay=!autoplay;changeSlide(slide+(a==='next'?1:a==='previous'?-1:0));resetTimer();}if(button.dataset.filter){currentFilter=button.dataset.filter;render();[...document.querySelectorAll('[data-filter]')].find(el=>el.dataset.filter===currentFilter)?.focus();}if(button.dataset.checkin){const id=button.dataset.checkin;const persisted=writeLocal(id==='morning'?'water-checkin':`water-event-${id}`,id==='morning'?localDate():'yes');render();main.focus({preventScroll:true});toast(persisted?(id==='morning'?'今日第一杯水，已记录。':'已收藏这场活动。'):'浏览器存储不可用，本次记录仅在当前页面会话有效。');}if(button.dataset.saveProduct){const persisted=writeLocal(`water-product-${button.dataset.saveProduct}`,'yes');render();main.focus({preventScroll:true});toast(persisted?'已加入当前浏览器的心愿单。':'浏览器存储不可用，心愿单仅在当前页面会话有效。');}});
 main.addEventListener('submit',event=>{if(event.target.id!=='partner-form')return;event.preventDefault();const form=event.target;const data=new FormData(form);const brand=String(data.get('brand')||'').trim();if(!brand){form.elements.brand.setCustomValidity('请输入品牌名称');form.elements.brand.reportValidity();return;}const result=document.querySelector('#form-result');result.replaceChildren();const box=document.createElement('div');box.className='success';box.textContent=`意向预览：${brand} · ${data.get('category')}。联系邮箱：${data.get('contact')}。${data.get('idea')?'合作想法：'+data.get('idea')+'。':''}此内容仅在当前页面展示，未提交给平台。`;result.append(box);});
 main.addEventListener('input',event=>{if(event.target.name==='brand')event.target.setCustomValidity('');});
 window.addEventListener('hashchange',()=>{currentFilter='全部';render(true);});
 document.addEventListener('visibilitychange',resetTimer);
+function decorateInnerPage(page) {
+  if (!page) return;
+  const heading = main.querySelector('.page-head, .journey-heading');
+  if (heading && !heading.querySelector('.back')) {
+    heading.insertAdjacentHTML('afterbegin', `<a class="back" href="#/">${icon('arrow-left')} 返回水的日常</a>`);
+  }
+}
 function decorateIcons(root) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   const nodes = [];
@@ -153,7 +166,7 @@ document.querySelector('.menu-toggle').addEventListener('click', () => {
   toggle.setAttribute('aria-label', open?'关闭导航':'打开导航');
   toggle.innerHTML = icon(open?'x':'menu-2');
 });
-document.querySelector('.header').addEventListener('click', event => {const link=event.target.closest('a');if(!link||route().length)return;const index={'#/':0,'#/activities':1,'#/products':2,'#/partners':3}[link.getAttribute('href')];if(index!==undefined){event.preventDefault();goPanel(index);closeMenu();}});
+document.querySelector('.header').addEventListener('click', event => {const link=event.target.closest('a');if(!link||route().length)return;const index={'#/':0,'#/partners':3}[link.getAttribute('href')];if(index!==undefined){event.preventDefault();goPanel(index);closeMenu();}});
 document.querySelector('#navigation').addEventListener('click', event => { if(event.target.closest('a')) closeMenu(); });
 document.addEventListener('keydown', event => { if(event.key==='Escape') closeMenu(); });
 reducedMotion.addEventListener('change',event=>{autoplay=!event.matches;changeSlide(slide);resetTimer();});
@@ -161,13 +174,13 @@ function reflectPanel(index) {
   const changed = activePanel !== index;
   activePanel = index;
   document.body.classList.toggle('home-light', index===1||index===2);
-  document.querySelectorAll('.header [data-nav]').forEach(a=>{if(a.dataset.nav===['home','activities','products','partners'][index])a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   document.querySelectorAll('[data-go-panel]').forEach((button,i)=>{if(i===index)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');});
   const counter = document.querySelector('.panel-counter');
   if(counter)counter.textContent=`0${index+1} / 04`;
   const nextButton=document.querySelector('[data-next-panel]');
   if(nextButton){nextButton.setAttribute('aria-label',index===3?'返回首页第一屏':'向下翻至下一屏');nextButton.querySelector('.next-label').textContent=index===3?'回到起点':'向下探索';nextButton.classList.toggle('at-end',index===3);}
   if(changed)resetTimer();
+  publishWaterState();
 }
 function setupPanels() {
   panelObserver?.disconnect();
@@ -175,7 +188,7 @@ function setupPanels() {
   panelSettling=false;
   if(route().length){document.body.classList.remove('home-light');return;}
   activePanel=0;
-  main.scrollTop=0;
+  main.scrollTo({top:0,behavior:'instant'});
   reflectPanel(0);
   panelObserver=new IntersectionObserver(entries=>{
     const visible=entries.filter(e=>e.isIntersecting&&e.intersectionRatio>.55).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
@@ -186,7 +199,7 @@ function setupPanels() {
 function goPanel(index) {
   const panels=[...main.querySelectorAll('[data-panel]')];
   const next=Math.max(0,Math.min(panels.length-1,index));
-  if(!panels[next]||next===activePanel)return;
+  if(!panels[next]||(next===activePanel&&Math.abs(main.scrollTop-panels[next].offsetTop)<2))return;
   panelSettling=true;
   clearTimeout(panelSettleTimer);
   main.scrollTo({top:panels[next].offsetTop,behavior:reducedMotion.matches?'instant':'smooth'});
@@ -212,10 +225,29 @@ main.addEventListener('click',event=>{
   if(event.target.closest('[data-next-panel]'))goPanel(activePanel===3?0:activePanel+1);
 });
 document.addEventListener('keydown',event=>{
-  if(route().length||event.altKey||event.ctrlKey||event.metaKey||event.target.closest('input,textarea,select,button,a,[contenteditable="true"]'))return;
+  if(event.repeat||route().length||event.altKey||event.ctrlKey||event.metaKey||event.target.closest('input,textarea,select,button,a,[contenteditable="true"]'))return;
   const direction=['ArrowDown','PageDown',' '].includes(event.key)?1:['ArrowUp','PageUp'].includes(event.key)?-1:0;
   if(direction){event.preventDefault();if(!panelSettling)goPanel(activePanel+direction);}
   if(event.key==='Home'||event.key==='End'){event.preventDefault();goPanel(event.key==='Home'?0:3);}
+});
+let resizeTimer;
+window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(!route().length){const target=main.querySelector(`[data-panel="${activePanel}"]`);if(target)main.scrollTo({top:target.offsetTop,behavior:'instant'});}},120);});
+function publishWaterState() {
+  const enabled=autoplay&&!reducedMotion.matches;
+  const toggle=main.querySelector('.water-toggle');
+  if(toggle){
+    toggle.setAttribute('aria-pressed',String(enabled));
+    toggle.setAttribute('aria-label',reducedMotion.matches?'已按系统偏好关闭水面动效':`${enabled?'暂停':'开启'}水面动效`);
+    toggle.disabled=reducedMotion.matches;
+    toggle.querySelector('[data-water-indicator]').textContent=enabled?'开':'关';
+  }
+  document.dispatchEvent(new CustomEvent('water-scene-change',{detail:{home:!route().length,panel:activePanel,slide,enabled}}));
+}
+document.addEventListener('water-effect-status',event=>{
+  if(['unsupported','image-unavailable','context-lost'].includes(event.detail.status)){
+    const toggle=main.querySelector('.water-toggle');
+    if(toggle){toggle.querySelector('[data-water-indicator]').textContent='静态';toggle.setAttribute('aria-label','当前浏览器以静态水景展示');}
+  }
 });
 WaterJourney.init();
 render();

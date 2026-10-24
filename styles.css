@@ -27,10 +27,9 @@ img { max-width: 100%; }
 .partner-link { display: flex; align-items: center; gap: 18px; font-size: 12px; letter-spacing: 1px; }
 .member-link { border: 1px solid #7e929c; padding: 8px 22px; font-size: 12px; letter-spacing: 2px; }
 .menu-toggle,.mobile-story { display: none; }
-.is-home .header { position: absolute; top: 0; width: 100%; border-bottom: 0; color: #fff; }
-.is-home .header .brand>img { filter: brightness(0) invert(1); }
-.is-home .header .icon { filter: invert(1); }
-.is-home .member-link { border-color: #d7e6eb96; }
+.is-home .header { position: absolute; top: 0; width: 100%; color: var(--header-ink); }
+.is-home .header .brand>img { filter: none; }
+.is-home .header .icon { filter: none; }
 .eyebrow { font: 11px/1.8 Georgia,var(--sans); letter-spacing: 4px; }
 .hero { position: relative; height: clamp(680px,60.3vw,1000px); color: #fff; isolation: isolate; background: #082c3d; overflow: hidden; }
 .hero-images { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
@@ -236,10 +235,9 @@ dialog h2 { font-size: 34px; margin: 12px 0; }
 body.is-home { overflow: hidden; }
 .is-home #main { height: 100dvh; overflow-y: auto; overflow-x: hidden; position: relative; scroll-snap-type: y mandatory; scrollbar-width: none; overscroll-behavior-y: contain; scroll-behavior: smooth; }
 .is-home #main::-webkit-scrollbar { display: none; }
-.is-home .header { position: fixed; height: 100px; padding: 0 5.2%; transition: color .4s,background .4s; background: #03283980; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-.is-home.home-light .header { color: #102f40; background: #f8fcf4ed; }
+.is-home .header { position: fixed; height: 100px; padding: 0 5.2%; transition: background .35s,box-shadow .35s; background: var(--header-glass); backdrop-filter: blur(var(--header-blur)) saturate(125%); -webkit-backdrop-filter: blur(var(--header-blur)) saturate(125%); }
+.is-home.home-light .header { color: var(--header-ink); background: var(--header-glass); }
 .is-home.home-light .header .brand>img,.is-home.home-light .header .icon { filter: none; }
-.is-home.home-light .header .member-link { border-color: #667f8b; }
 .is-home>footer { display: none; }
 .home-panel { scroll-snap-align: start; scroll-snap-stop: always; height: 100dvh; min-height: 0; max-height: none; width: 100%; position: relative; box-sizing: border-box; }
 .hero:after { background: #03233859; }
@@ -252,7 +250,7 @@ body.is-home { overflow: hidden; }
 .recommend { bottom: 73px; color: #fff; background: #0b3045de; border-color: #d0e4ec8c; backdrop-filter: blur(22px); }
 .recommend:hover { background: #17465af2; }
 .recommend h2,.recommend .eyebrow,.recommend .text-link { color: #fff; }
-.experiences.home-panel { display: flex; flex-direction: column; justify-content: center; padding: 135px 5.2% 86px; background: #fbfcfa; }
+.experiences.home-panel { display: flex; flex-direction: column; justify-content: center; padding: 135px 5.2% 86px; background: #d8e9ef url('./assets/experience-atmosphere.png') center/cover; isolation: isolate; }
 .experiences .section-heading { margin: 0 0 34px; }
 .experiences .section-heading h2 { font-size: clamp(29px,3.45vw,54px); }
 .experiences .section-heading>p { color: #405768; line-height: 2; padding: 0; }
@@ -260,7 +258,7 @@ body.is-home { overflow: hidden; }
 .experience-grid .scene { height: clamp(230px,42vh,520px); }
 .experience-grid .card-bottom { margin-top: 17px; }
 .experience-grid .meta { color: #4b6270; }
-.collection.home-panel { display: grid; grid-template-columns: 36% 64%; align-items: center; padding: 145px 6% 100px; background-color: #eef7fc; background-blend-mode: screen; }
+.collection.home-panel { display: grid; grid-template-columns: 36% 64%; align-items: center; padding: 145px 6% 100px; background-color: #dcecf5; background-blend-mode: normal; isolation: isolate; }
 .collection .collection-copy { padding: 25px 20px 25px 0; }
 .collection .collection-copy h2 { color: #0a3044; }
 .collection .collection-copy>p { color: #294b60; }
@@ -270,7 +268,7 @@ body.is-home { overflow: hidden; }
 .collection-product .product-art { max-height: 560px; }
 .collection-product h3 { color: #082d43; font-size: 23px; padding-top: 18px; text-shadow: 0 1px 4px white; }
 .collection .image-note { bottom: 30px; right: 6%; font-size: 10px; color: #2b4b60; }
-.partner-panel { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8%; align-content: center; padding: 125px 8% 150px; color: #fff; background: #0c2c3b url('./assets/hero-water.png') center/cover; background-blend-mode: multiply; isolation: isolate; }
+.partner-panel { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8%; align-content: center; padding: 125px 8% 150px; color: #fff; background: #426b82 url('./assets/hero-water.png') center/cover; background-blend-mode: soft-light; isolation: isolate; }
 .partner-panel .partner-content { z-index: 1; }
 .partner-panel .eyebrow { font: 12px/2 Georgia,serif; letter-spacing: 4px; color: #e7f3fb; margin: 0 0 24px; }
 .partner-panel h2 { font-size: clamp(43px,4.8vw,74px); line-height: 1.45; letter-spacing: 3px; color: #fff; }
@@ -279,7 +277,7 @@ body.is-home { overflow: hidden; }
 .partner-panel .outline { border-color: #d2e3eb; background: #0b293ccc; color: #fff; }
 .partner-panel .primary.light { background: #f3f8fa; color: #0b3044; }
 .partner-panel .primary.light .icon { filter: none; }
-.partner-watermark { position: absolute; width: 38%; max-width: 620px; top: 20%; right: 4%; opacity: .07; filter: brightness(0) invert(1); z-index: -1; pointer-events: none; }
+.partner-watermark { position: absolute; width: 38%; max-width: 620px; top: 20%; right: 4%; opacity: .045; filter: brightness(0) invert(1); z-index: -1; pointer-events: none; }
 .partner-principles { align-self: center; position: relative; }
 .partner-principles>div { border-top: 1px solid #b8d5e252; padding: 24px 0; display: grid; grid-template-columns: 35px 1fr; column-gap: 16px; }
 .partner-principles span { grid-row: span 2; font: 15px/2 Georgia; color: #d6e5ec; }
@@ -309,7 +307,7 @@ body.is-home { overflow: hidden; }
 @media (max-width:650px) {
   .is-home .header { height: 78px; padding: 0 6%; }
   .is-home .header nav { top: 78px; }
-  .is-home.home-light .header nav { color: white; }
+  .is-home.home-light .header nav { color: var(--header-ink); }
   .home-panel { height: 100dvh; }
   .hero-copy { top: 18%; left: 7%; }
   .hero h1 { font-size: clamp(36px,10.2vw,56px); }
@@ -402,3 +400,77 @@ body.is-home { overflow: hidden; }
   .integrated-footer { bottom: 25px; padding-top: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .is-home #main { scroll-behavior: auto; } }
+
+/* Water atmosphere retained without washing out imagery or crushing dark tones. */
+.experiences.home-panel::before,
+.collection.home-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.experiences.home-panel::before { background: #edf5f755; }
+.collection.home-panel::before { background: #f4faff59; }
+.experiences .section-heading h2,
+.experience-grid .card-bottom h3 { color: #103749; }
+.experiences .section-heading>p,
+.experience-grid .meta { color: #14394d; }
+.experience-grid .card-action { color: #183f53; }
+.collection .collection-copy>p { color: #163d52; }
+.collection-product h3 { text-shadow: 0 1px 6px #fff, 0 0 16px #fff; }
+.partner-panel .partner-content,
+.partner-panel .partner-principles { text-shadow: 0 1px 6px #173c5066; }
+.partner-panel .outline { background: #244b62b3; border-color: #dcebf2; }
+.partner-panel .outline:hover { background: #345f77e6; }
+.integrated-footer { border-top-color: #d0e4ef70; }
+.integrated-footer>div { color: #f1f7fb; text-shadow: 0 1px 4px #173c50; }
+@media (max-width:650px) {
+  .experiences.home-panel { background-position: 45% center; }
+  .experiences.home-panel::before { background: #edf5f755; }
+  .collection.home-panel { background-position: 56% center; }
+  .collection.home-panel::before { background: #f4faff70; }
+}
+/* A quiet translucent reading surface keeps the brighter water behind partner copy. */
+.partner-panel .partner-principles { background: #153b5152; padding: 0 24px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.partner-panel .partner-principles p { color: #fff; }
+@media (max-width:650px) { .partner-panel .partner-principles { padding: 11px 12px 15px; gap: 12px; } }
+/* Stronger hierarchy for the experience chapter. */
+@font-face { font-family: 'Source Water Serif'; src: url('./assets/fonts/noto-serif-sc-semibold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
+.experiences .section-heading h2 { font-weight: 600; color: #082b40; letter-spacing: .5px; }
+.experience-grid .card-bottom h3 { font-weight: 600; color: #082b40; }
+.experiences .section-heading>p { color: #10364d; font-family: var(--sans); font-weight: 500; }
+.experience-grid .meta { font-family: var(--sans); color: #10364d; font-weight: 500; text-shadow: 0 1px 4px #f7fcffb3; }
+.experience-grid .card-action { color: #082b40; font-weight: 600; }
+@media (min-width:1151px) {
+  .experiences .section-heading h2 { font-size: clamp(42px,3.8vw,60px); }
+  .experiences .section-heading>p { font-size: 18px; }
+  .experience-grid .card-bottom h3 { font-size: 31px; }
+  .experience-grid .meta { font-size: 17px; }
+  .experience-grid .card-action { font-size: 15px; }
+}
+@media (max-width:650px) {
+  .experiences .section-heading>p { font-size: 13px; }
+  .experience-grid .card-bottom h3 { font-size: 20px; }
+  .experience-grid .meta { font-size: 12px; }
+  .experience-grid .card-action { font-size: 11px; }
+}
+@media (max-width:650px) and (max-height:720px) {
+  .experience-grid .card-bottom h3 { font-size: 18px; }
+  .experience-grid .card-action { font-size: 10px; }
+}
+/* The GPU layer affects photographic water only; all content remains native DOM. */
+.water-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: -2; pointer-events: none; }
+.water-canvas[hidden] { display: none; }
+.hero.is-flowing .hero-image.is-active { animation: none; }
+.hero-image { transform: none; }
+.water-toggle { position: fixed; z-index: 6; top: 116px; right: 5.2%; display: flex; align-items: center; gap: 8px; padding: 7px 12px; font-size: 11px; letter-spacing: 1px; color: #fff; background: #113b51a6; border: 1px solid #cfdfeb55; backdrop-filter: blur(8px); }
+.water-toggle .icon { width: 15px; height: 15px; filter: invert(1); }
+.water-toggle [data-water-indicator] { border-left: 1px solid #bfd7e766; padding-left: 9px; }
+.water-toggle:hover { background: #1c4a62e6; }
+.home-light .water-toggle { color: #123b51; background: #f5fbfbd9; border-color: #7596a777; }
+.home-light .water-toggle .icon { filter: none; }
+.home-light .water-toggle [data-water-indicator] { border-color: #54798a66; }
+@media (max-width:1150px) { .water-toggle { top: 107px; } }
+@media (max-width:650px) { .water-toggle { top: 85px; right: 6%; padding: 5px 8px; font-size: 10px; gap: 5px; } .water-toggle .icon { width: 12px; height: 12px; } }
+@media (max-width:650px) and (max-height:720px) { .water-toggle { top: 75px; font-size: 9px; } }
